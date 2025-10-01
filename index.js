@@ -1,5 +1,6 @@
-// Quiz Data
+// Quiz Data (30 Questions)
 const quizData = [
+  // Existing 10 questions
   { question: "What does NPS stand for?", options: ["National Payment System","National Pension Scheme","New Pension Saving","National Public Security"], answer: 1 },
   { question: "Who regulates the NPS in India?", options: ["SEBI","RBI","PFRDA","IRDAI"], answer: 2 },
   { question: "What is the minimum age to join NPS?", options: ["18 years","21 years","25 years","30 years"], answer: 0 },
@@ -9,7 +10,29 @@ const quizData = [
   { question: "What is the lock-in period for NPS Tier I?", options: ["5 years","10 years","Till retirement","15 years"], answer: 2 },
   { question: "Which of these is a benefit of NPS?", options: ["Guaranteed returns","Tax benefits under Section 80C and 80CCD","Free insurance","Loan facility"], answer: 1 },
   { question: "Percentage of NPS corpus withdrawable as lump sum?", options: ["20%","40%","60%","100%"], answer: 2 },
-  { question: "Investment choices in NPS?", options: ["Equity, Corporate Bonds, Government Securities","Gold, Real Estate, FD","Crypto, Forex, Equity","PPF, FD, NSC"], answer: 0 }
+  { question: "Investment choices in NPS?", options: ["Equity, Corporate Bonds, Government Securities","Gold, Real Estate, FD","Crypto, Forex, Equity","PPF, FD, NSC"], answer: 0 },
+
+  // New 20 questions
+  { question: "Which Act governs NPS?", options: ["PFRDA Act, 2013","Banking Regulation Act","Companies Act","SEBI Act"], answer: 0 },
+  { question: "What is the full form of PFRDA?", options: ["Pension Fund Regulatory and Development Authority","Public Finance Regulatory and Development Authority","Pension Fund Reserves and Deposits Agency","Private Financial Regulation Development Authority"], answer: 0 },
+  { question: "What are the two types of NPS accounts?", options: ["Tier I and Tier II","Basic and Premium","Public and Private","Retirement and Pension"], answer: 0 },
+  { question: "Minimum annual contribution in Tier I account?", options: ["₹500","₹1000","₹2000","₹6000"], answer: 1 },
+  { question: "Minimum contribution for opening Tier II account?", options: ["₹250","₹500","₹1000","₹2000"], answer: 0 },
+  { question: "Which of these is true about Tier II account?", options: ["Voluntary savings account","Mandatory for all","Locked till retirement","Only for government employees"], answer: 0 },
+  { question: "Tax benefit under Section 80CCD(1B)?", options: ["₹25,000","₹50,000","₹1,00,000","₹1,50,000"], answer: 1 },
+  { question: "Employer contribution is exempt under which section?", options: ["80C","80CCD(2)","10(10D)","24(b)"], answer: 1 },
+  { question: "What is the maximum % of salary an employer can contribute under 80CCD(2)?", options: ["5%","10%","14% for govt, 10% for others","20%"], answer: 2 },
+  { question: "At exit, minimum % of corpus to purchase annuity?", options: ["20%","30%","40%","50%"], answer: 2 },
+  { question: "Which document is required to open NPS account?", options: ["PAN card","Passport","Driving license","Ration card"], answer: 0 },
+  { question: "What is PRAN?", options: ["Permanent Retirement Account Number","Pension Registration Application Number","Personal Retirement Application Number","Permanent Record of Account Number"], answer: 0 },
+  { question: "How many Pension Fund Managers (PFMs) can a subscriber choose?", options: ["1","2","3","4"], answer: 0 },
+  { question: "Which of the following is NOT an investment option under NPS?", options: ["Equity (E)","Corporate Bonds (C)","Government Securities (G)","Gold ETF (X)"], answer: 3 },
+  { question: "What happens if contribution is not made in Tier I?", options: ["Account freezes","Penalty applies","Automatically closed","Nothing happens"], answer: 0 },
+  { question: "Which option allows auto-choice investment in NPS?", options: ["Active Choice","Auto Choice – Life Cycle Fund","Manual Choice","Balanced Option"], answer: 1 },
+  { question: "Which mode is NOT available for NPS contribution?", options: ["Online banking","UPI","Cheque/DD","Cash above ₹2,000"], answer: 3 },
+  { question: "Can NPS subscribers partially withdraw before 60?", options: ["Yes, after 3 years for specific purposes","No, never","Only after 10 years","Only with PFRDA approval"], answer: 0 },
+  { question: "Partial withdrawal limit from NPS Tier I?", options: ["10% of contributions","20% of contributions","25% of contributions","50% of contributions"], answer: 2 },
+  { question: "Which body provides the annuity to NPS subscribers?", options: ["Banks","Insurance companies (Annuity Service Providers)","Government directly","Stock exchange"], answer: 1 }
 ];
 
 let currentQ = 0;
