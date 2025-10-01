@@ -54,7 +54,6 @@ document.getElementById("playbtn").addEventListener("click", function(){
   }
 });
 
-// Show question
 function showQuestion(unanswered){
   const q = unanswered[currentQ];
   const quizBox = document.createElement("div");
@@ -63,36 +62,82 @@ function showQuestion(unanswered){
     position: "fixed",
     top: "0", left: "0",
     width: "100%", height: "100%",
-    background: "#fff",
+    background: "#f5f7fa",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     zIndex: "999",
     textAlign: "center",
-    padding: "20px"
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+    animation: "fadeIn 0.4s ease"
   });
 
   quizBox.innerHTML = `
-    <h2>${q.question}</h2>
-    <div id="options"></div>
-    <p id="msg" style="margin-top:15px;font-weight:bold;"></p>
-    <div style="margin-top:20px;">
-      <button id="nextBtn" style="display:none;margin-right:10px;padding:10px 20px;font-size:16px;">Next</button>
-      <button id="backBtn" style="padding:10px 20px;font-size:16px;">Back</button>
+    <div style="width:100%; max-width:600px;">
+      <h2 style="font-size:22px; margin-bottom:15px;">${q.question}</h2>
+      <p style="font-size:14px; color:#666; margin-bottom:20px;">Question ${currentQ+1} of ${unanswered.length}</p>
+      <div id="options" style="display:flex; flex-direction:column; gap:10px;"></div>
+      <p id="msg" style="margin-top:15px;font-weight:bold;font-size:16px;"></p>
+    </div>
+
+    <div style="
+      width:100%;
+      max-width:600px;
+      display:flex;
+      justify-content:space-between;
+      padding:15px;
+      background:#fff;
+      border-top:1px solid #ddd;
+      position:sticky;
+      bottom:0;
+      border-radius:15px 15px 0 0;
+      box-shadow:0 -3px 8px rgba(0,0,0,0.1);
+    ">
+      <button id="backBtn" style="
+        padding:12px 25px;
+        font-size:16px;
+        font-weight:bold;
+        background:#ff7676;
+        color:white;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        transition:0.3s;
+      ">⬅ Back</button>
+      
+      <button id="nextBtn" style="
+        display:none;
+        padding:12px 25px;
+        font-size:16px;
+        font-weight:bold;
+        background:#4CAF50;
+        color:white;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        transition:0.3s;
+      ">Next ➡</button>
     </div>
   `;
 
   document.body.appendChild(quizBox);
 
+  // Option buttons
   const optionsDiv = quizBox.querySelector("#options");
   q.options.forEach((opt, index)=>{
     const btn = document.createElement("button");
     btn.textContent = opt;
-    btn.style.display = "block";
-    btn.style.margin = "5px";
-    btn.style.padding = "10px 15px";
+    btn.style.padding = "12px";
     btn.style.fontSize = "16px";
+    btn.style.border = "2px solid #ccc";
+    btn.style.borderRadius = "10px";
+    btn.style.background = "#fff";
+    btn.style.cursor = "pointer";
+    btn.style.transition = "0.3s";
+    btn.onmouseover = ()=> btn.style.background = "#e6f0ff";
+    btn.onmouseout = ()=> btn.style.background = "#fff";
     btn.addEventListener("click", ()=> checkAnswer(index, q.answer, unanswered));
     optionsDiv.appendChild(btn);
   });
@@ -110,17 +155,12 @@ function showQuestion(unanswered){
 
   // Back button
   document.getElementById("backBtn").addEventListener("click", ()=>{
-    // Save current progress before leaving
-    const totalAttempted = currentQ + 1; // questions seen so far
+    const totalAttempted = currentQ + 1;
     const result = { total: totalAttempted, correct, wrong };
     let past = JSON.parse(localStorage.getItem("npsResults")) || [];
     past.push(result);
     localStorage.setItem("npsResults", JSON.stringify(past));
-
-    // Remove quiz box
     document.body.removeChild(quizBox);
-
-    // Reload past results and go "home"
     loadPastResults();
   });
 }
